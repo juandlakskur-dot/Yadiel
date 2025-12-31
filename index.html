@@ -339,6 +339,77 @@
 .wa-float:hover{
   filter: brightness(1.05);
 }
+    /* ====== FIX MOBILE LAYOUT (NO SE CORRE) ====== */
+@media (max-width: 920px){
+
+  /* evita desbordes */
+  html, body{
+    overflow-x: hidden;
+  }
+
+  .container{
+    padding: 0 14px;
+  }
+
+  /* grid general del catálogo */
+  .gallery-grid{
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .gallery-left,
+  .gallery-right{
+    grid-column: auto !important;
+    width: 100%;
+  }
+
+  /* galería de productos 1 columna */
+  .products-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  /* cards más compactas */
+  .card{
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.10);
+  }
+
+  /* carrusel adaptado */
+  .track{
+    padding: 6px 0 14px;
+  }
+
+  .slide{
+    min-width: 86vw !important;  /* se adapta al ancho del celular */
+  }
+
+  /* imágenes dentro del producto */
+  .pimg{
+    aspect-ratio: 16/11;
+  }
+
+  /* reduce paddings internos */
+  .pbody{
+    padding: 12px;
+  }
+
+  /* títulos no se salen */
+  .ptitle{
+    font-size: 16px;
+  }
+}
+
+    @media (max-width: 920px){
+  .gallery-left{
+    order: 1;
+  }
+  .gallery-right{
+    order: 2;
+  }
+}
+
+
 
   </style>
 </head>
@@ -813,4 +884,5 @@ Mi ciudad es: ___
 
 </body>
 </html>
+
 
