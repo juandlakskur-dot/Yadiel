@@ -253,6 +253,93 @@
     height: 54px;
   }
 }
+
+    /* ==== FIX HEADER EN MOVIL ==== */
+@media (max-width: 920px){
+
+  header{
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+  }
+
+  .nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    gap: 8px;
+  }
+
+  /* Logo centrado */
+  .logo-center, .logo{
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    justify-content: center;
+  }
+
+  .logo-img{
+    height: 52px;
+  }
+
+  /* Menú en 1 fila con scroll (no crece hacia abajo) */
+  .navlinks{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 8px 12px;
+    border-top: 1px solid rgba(0,0,0,.08);
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    background: rgba(255,255,255,.92);
+    scrollbar-width: none;
+  }
+
+  .navlinks::-webkit-scrollbar{
+    display: none;
+  }
+
+  .navlinks a{
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  /* Ocultamos cosas que rompen el header en móvil */
+  .nav-right{
+    display: none !important;
+  }
+
+  /* Bajamos un poco el contenido para que no quede tapado */
+  main{
+    padding-top: 10px;
+  }
+}
+
+    .wa-float{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #22c55e;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  z-index: 9999;
+}
+
+.wa-float:hover{
+  filter: brightness(1.05);
+}
+
   </style>
 </head>
 
@@ -719,5 +806,11 @@ Mi ciudad es: ___
     renderFilterBar();
     renderGallery();
   </script>
+
+  <a class="wa-float" href="https://wa.me/TU_NUMERO_AQUI" target="_blank" aria-label="WhatsApp">
+  💬
+</a>
+
 </body>
 </html>
+
