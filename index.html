@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calzados Yadiel | Zapatos en COP</title>
+  <style>
+    :root{
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+
+  --brand:#7c5cff;
+  --brand2:#22c55e;
+  --warn:#f59e0b;
+
+  --border: rgba(17,24,39,.10);
+  --shadow: 0 12px 25px rgba(17,24,39,.10);
+  --radius: 18px;
+  --radius2: 26px;
+  --max: 1150px;
+}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:radial-gradient(1000px 600px at 20% 0%, rgba(124,92,255,.22), transparent 60%), radial-gradient(800px 500px at 80% 30%, rgba(34,197,94,.18), transparent 60%), var(--bg); color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.03)}
+    .btn{border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);padding:12px 14px;border-radius:999px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:10px}
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),#4f46e5);border-color:transparent}
+    .btn.primary:hover{filter:brightness(1.05)}
+    .btn.green{background:linear-gradient(135deg,var(--brand2),#16a34a);border-color:transparent}
+    .btn.small{padding:10px 12px;font-size:14px}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.35);color:#ffd28a}
+    .grid{display:grid;gap:16px}
+    .card{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+    .card.pad{padding:18px}
+    .section{padding:56px 0}
+    .h2{font-size:28px;margin:0 0 8px 0}
+    .sub{color:var(--muted);margin:0}
+    .hr{height:1px;background:var(--border);margin:16px 0}
+
+    header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.nav{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* IZQ | CENTRO | DER */
+  align-items: center;
+  padding: 10px 0;
+  gap: 12px;
+}
+
+
+    .logo-img{
+  height: 48px;          /* súbelo bastante */
+  width: auto;
+  object-fit: contain;
+  display:block;
+}
+
+@media (max-width: 920px){
+  .logo-img{ height: 56px; }
+}
+
+
+    .navlinks{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+    .navlinks a{
+  padding: 10px 12px;
+  border-radius: 999px;
+  color: #6b7280;
+  font-weight: 600;
+}
+    .navlinks a:hover{
+  background: rgba(0,0,0,.05);
+  color: #111827;
+}
+    .nav-right{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+    .search{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 12px;
+  min-width: 260px;
+}
+    .search input{
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #111827;
+  width: 100%;
+}
+    .cart{position:relative}
+    .cart .count{position:absolute;top:-6px;right:-6px;background:var(--warn);color:#1b1302;font-weight:800;border-radius:999px;padding:2px 7px;font-size:12px;border:2px solid rgba(11,12,16,.9)}
+
+    .hero{padding:34px 0 18px}
+    .hero-wrap{display:grid;grid-template-columns: 1.1fr .9fr;gap:18px;align-items:stretch}
+    .hero-left{padding:22px;border-radius:var(--radius2);background:linear-gradient(180deg, rgba(124,92,255,.16), rgba(255,255,255,.03));border:1px solid var(--border);box-shadow:var(--shadow)}
+    .kicker{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .title{font-size:44px;line-height:1.02;margin:12px 0 10px}
+    .desc{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 18px}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+    .hero-right{display:grid;gap:16px}
+    .promo{padding:18px;border-radius:var(--radius2);background:linear-gradient(135deg, rgba(34,197,94,.16), rgba(255,255,255,.03));border:1px solid var(--border);box-shadow:var(--shadow)}
+    .promo h3{margin:0 0 6px 0}
+    .promo strong{ color: var(--text); }
+.promo p{ color: var(--muted); }
+
+    .hero-img{border-radius:var(--radius2);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.03))}
+    .hero-img .ph{
+      aspect-ratio: 4/3; display:grid; place-items:center;
+      background:
+        radial-gradient(200px 140px at 30% 30%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(260px 170px at 70% 60%, rgba(34,197,94,.25), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:rgba(255,255,255,.85); font-weight:900; letter-spacing:.3px;
+      padding:16px; text-align:center;
+    }
+
+    .cats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .chip{
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--muted);
+  padding:10px 12px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.2s;
+}
+    .chip:hover{
+  background:#f3f4f6;
+  color:var(--text);
+}
+    .chip.active{
+  background:rgba(124,92,255,.15);
+  border-color:rgba(124,92,255,.35);
+  color:var(--text);
+}
+
+    .pimg{
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#fff;
+  aspect-ratio: 4/3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.p-photo{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:10px;
+  display:block;
+}
+
+    .pbody{padding:14px}
+    .ptitle{margin:0 0 6px 0;font-weight:900}
+    .pmeta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+    .price{color:var(--text);font-weight:950}
+
+
+    .strike{opacity:.6;text-decoration:line-through;margin-left:6px;font-weight:700}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}
+    .stars{color:#ffd28a;font-size:13px}
+
+    .carousel{position:relative}
+    .track{display:flex;gap:14px;overflow:auto;scroll-snap-type:x mandatory;padding:6px 6px 14px;scrollbar-width:thin}
+    .track::-webkit-scrollbar{height:10px}
+    .track::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:999px}
+    .slide{min-width: 280px; scroll-snap-align:start}
+    .c-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:10px 0 0}
+    .muted{color:var(--muted)}
+    .dots{display:flex;gap:6px;align-items:center}
+    .dot{width:9px;height:9px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.12)}
+    .dot.on{background:rgba(124,92,255,.7);border-color:rgba(124,92,255,.6)}
+
+    .gallery-grid{grid-template-columns: repeat(12, 1fr)}
+    .gallery-left{grid-column: span 4}
+    .gallery-right{grid-column: span 8}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .products-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+    .note{font-size:14px;color:var(--muted);line-height:1.55}
+
+    .benefits{grid-template-columns:repeat(3,1fr)}
+    .testis{grid-template-columns:repeat(3,1fr)}
+    details{border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03);padding:12px}
+    details summary{cursor:pointer;font-weight:900}
+    details p{color:var(--muted);margin:10px 0 0}
+    .newsletter{display:flex;gap:10px;flex-wrap:wrap}
+    .newsletter input{flex:1;min-width:220px;border:1px solid var(--border);background:rgba(255,255,255,.03);border-radius:999px;padding:12px 14px;color:var(--text);outline:0}
+
+    footer{padding:28px 0;border-top:1px solid var(--border);color:var(--muted)}
+    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+    /* RESPONSIVE */
+@media (max-width: 920px){
+  .nav{
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+
+  .logo-center{
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .nav-left{
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+  }
+
+  .nav-right{
+    display: none; /* en móvil lo ocultamos para que no se rompa */
+  }
+
+  .navlinks{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo-img{
+    height: 54px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+  <!-- IZQUIERDA -->
+  <div class="nav-left">
+    <nav class="navlinks" aria-label="Navegación principal">
+      <a href="#destacados">Destacados</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+
+  <!-- CENTRO -->
+  <a class="logo-center" href="#top">
+    <img class="logo-img" src="galeria/Yadiel.png" alt="Calzados Yadiel">
+  </a>
+
+  <!-- DERECHA -->
+  <div class="nav-right">
+    <div class="search" role="search">
+      🔎 <input id="searchInput" type="search" placeholder="Busca: running, urbano, cuero..." />
+    </div>
+
+    <button class="btn cart" id="cartBtn" aria-label="Carrito">
+      🛒 Guardados <span class="count" id="cartCount">0</span>
+    </button>
+
+    <a class="btn primary" href="#catalogo">Ver productos</a>
+  </div>
+</div>
+
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-wrap">
+          <div class="hero-left">
+            <div class="kicker">
+              <span class="pill">🚚 Envíos en Colombia</span>
+              <span class="pill">💳 Pago por acuerdo</span>
+              <span class="badge">HOY: -30% en seleccionados</span>
+            </div>
+
+            <h1 class="title">Zapatos con estilo y comodidad real.</h1>
+            <p class="desc">
+              En <strong>Calzados Yadiel</strong> encuentras urbanos, deportivos y formales.
+              Compra por WhatsApp: rápido, fácil y con asesoría de talla.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn primary" href="#destacados">🔥 Ver ofertas</a>
+              <a class="btn" href="#catalogo">Explorar catálogo</a>
+              <button class="btn green" id="whatsBtn">💬 Comprar por WhatsApp</button>
+            </div>
+
+            <div class="cats" aria-label="Categorías rápidas">
+              <button class="chip active" data-cat="all">Todos</button>
+              <button class="chip" data-cat="running">Running</button>
+              <button class="chip" data-cat="urbano">Urbano</button>
+              <button class="chip" data-cat="formal">Formal</button>
+              <button class="chip" data-cat="cuero">Cuero</button>
+              <button class="chip" data-cat="outlet">Outlet</button>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="promo">
+              <h3>🎁 Promo del día</h3>
+              <p>
+                Cupón <strong>YADIEL30</strong>: 30% OFF en productos seleccionados.
+                <span class="muted">Válido hoy.</span>
+              </p>
+              <div class="hr"></div>
+              <p class="muted">💡 Tip: Dinos tu talla y ciudad por WhatsApp y te confirmamos envío.</p>
+            </div>
+
+            <div class="hero-img" aria-label="Banner principal">
+  <img src="galeria/banner.png" alt="Promoción" style="width:100%;height:100%;object-fit:cover;">
+</div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="destacados">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;">
+          <div>
+            <h2 class="h2">Destacados de la semana</h2>
+            <p class="sub">6 productos listos para vender por WhatsApp.</p>
+          </div>
+          <div class="muted">Desliza →</div>
+        </div>
+
+        <div class="carousel card pad" style="margin-top:14px;">
+          <div class="track" id="track" aria-label="Carrusel de productos destacados"></div>
+
+          <div class="c-controls">
+            <button class="btn small" id="prevBtn">⬅️</button>
+            <div class="dots" id="dots"></div>
+            <button class="btn small" id="nextBtn">➡️</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="grid gallery-grid">
+          <aside class="gallery-left">
+            <div class="card pad">
+              <h2 class="h2">Catálogo</h2>
+              <p class="sub">Filtra por categoría y encuentra tu estilo.</p>
+
+              <div class="filters" id="filterBar" aria-label="Filtros de catálogo"></div>
+
+              <div class="hr"></div>
+              <p class="note">
+                ✅ Consejo: escribe “outlet” en el buscador para ver ofertas.
+                <br/>📦 Envíos a todo Colombia (ajusta según tu logística).
+              </p>
+            </div>
+
+            <div class="card pad" style="margin-top:14px;">
+              <h3 style="margin:0 0 6px 0;">⭐ Cambios por talla</h3>
+              <p class="note" style="margin:0;">Te ayudamos a elegir talla por WhatsApp. Cambios según condiciones.</p>
+            </div>
+          </aside>
+
+          <div class="gallery-right">
+            <div class="card pad">
+              <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;">
+                <div>
+                  <h3 style="margin:0 0 6px 0;">Galería de productos</h3>
+                  <p class="sub" id="resultCount">Mostrando productos</p>
+                </div>
+                <div class="pill">💬 Compra directa por WhatsApp</div>
+              </div>
+
+              <div class="hr"></div>
+              <div class="products-grid" id="galleryGrid" aria-label="Galería de productos"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="beneficios">
+      <div class="container">
+        <h2 class="h2">¿Por qué Calzados Yadiel?</h2>
+        <p class="sub">Confianza + rapidez = más ventas.</p>
+
+        <div class="grid benefits" style="margin-top:14px;">
+          <div class="card pad">
+            <h3 style="margin:0 0 8px 0;">🧵 Calidad verificada</h3>
+            <p class="note" style="margin:0;">Materiales resistentes y acabados bien hechos.</p>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 8px 0;">🚚 Envíos</h3>
+            <p class="note" style="margin:0;">Te confirmamos costo y tiempos por WhatsApp.</p>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 8px 0;">💬 Asesoría</h3>
+            <p class="note" style="margin:0;">Te ayudamos con talla, horma y recomendaciones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="h2">Lo que dicen nuestros clientes</h2>
+        <p class="sub">Prueba social para aumentar conversiones.</p>
+
+        <div class="grid testis" style="margin-top:14px;">
+          <div class="card pad">
+            <div class="stars">★★★★★</div>
+            <p class="note">“Llegaron rápido y son comodísimos. Volveré a comprar.”</p>
+            <p class="muted" style="margin:0;">— Cliente</p>
+          </div>
+          <div class="card pad">
+            <div class="stars">★★★★★</div>
+            <p class="note">“Buena calidad y el WhatsApp responde de una.”</p>
+            <p class="muted" style="margin:0;">— Cliente</p>
+          </div>
+          <div class="card pad">
+            <div class="stars">★★★★☆</div>
+            <p class="note">“Excelente precio en outlet. Recomendados.”</p>
+            <p class="muted" style="margin:0;">— Cliente</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2 class="h2">Preguntas frecuentes</h2>
+        <p class="sub">Resuelve dudas antes de que se vayan.</p>
+
+        <div class="grid" style="margin-top:14px;">
+          <details>
+            <summary>¿Cómo pido por WhatsApp?</summary>
+            <p>Selecciona un producto y dale “Comprar”. Se abre WhatsApp con el mensaje listo para enviar.</p>
+          </details>
+          <details>
+            <summary>¿Cómo sé mi talla?</summary>
+            <p>Escríbenos tu talla habitual y si tu pie es ancho/normal. Te recomendamos la mejor opción.</p>
+          </details>
+          <details>
+            <summary>¿Hacen envíos a mi ciudad?</summary>
+            <p>Sí. Dinos tu ciudad y te confirmamos transportadora, costo y tiempo de entrega.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>
+            <div class="logo"><span class="mark">👟</span><span>Calzados Yadiel</span></div>
+            <p class="muted" style="margin:10px 0 0;">© <span id="year"></span> — Todos los derechos reservados.</p>
+          </div>
+          <div class="muted">
+            <div>📍 Colombia</div>
+            <div>📱 WhatsApp: (pon tu número)</div>
+            <div>✉️ soporte@tudominio.com</div>
+          </div>
+          <div class="muted">
+            <a href="#top">Volver arriba ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ====== CONFIG WHATSAPP ======
+    // IMPORTANTE: pon tu número SIN + y SIN espacios, ejemplo: 573001234567
+    const WHATSAPP_PHONE = "TU_NUMERO_AQUI";
+
+    // ====== DATA ======
+    const products = [
+      { id:"p1", name:"Nike Air Max", cat:["urbano"], price:320000, old:380000, rating:4.9, tag:"Nuevo", img:"galeria/nike.jpg" },
+      { id:"p2", name:"Armani Exchange", cat:["urbano"], price:159900, old:199900, rating:4.7, tag:"Top", img: "galeria/armani.jpg" },
+      { id:"p3", name:"Zapato Formal", cat:["formal"], price:219900, old:null, rating:4.6, tag:"Nuevo", img: "galeria/Formal.jpg" },
+      { id:"p4", name:"Cuero Clasico", cat:["cuero","formal"], price:249900, old:299900, rating:4.9, tag:"Premium", img: "galeria/cuero.jpg" },
+      { id:"p5", name:"Amiri Runner Nal M", cat:["running"], price:129900, old:189900, rating:4.5, tag:"Outlet", img: "galeria/runner.jpg" },
+      { id:"p6", name:"Amiri 1.1", cat:["urbano","outlet"], price:139900, old:179900, rating:4.4, tag:"-30%", img: "galeria/Amiri.jpg" },
+      { id:"p7", name:"Adidas Premium", cat:["urbano"], price:119900, old:null, rating:4.3, tag:"Comfy", img: "galeria/Adidas.jpg" },
+      { id:"p8", name:"Nike Star Runner 4", cat:["running"], price:209900, old:259900, rating:4.7, tag:"Outdoor", img: "galeria/Star.jpg" },
+    ];
+
+    const featuredIds = ["p1","p2","p4","p5","p3","p6"]; // 6 productos en carrusel
+    const categories = [
+      { key:"all", label:"Todos" },
+      { key:"running", label:"Running" },
+      { key:"urbano", label:"Urbano" },
+      { key:"formal", label:"Formal" },
+      { key:"cuero", label:"Cuero" },
+      { key:"outlet", label:"Outlet" },
+    ];
+
+    // ====== HELPERS ======
+    const $ = (q) => document.querySelector(q);
+    const $$ = (q) => Array.from(document.querySelectorAll(q));
+    const money = (n) => n.toLocaleString("es-CO", { style:"currency", currency:"COP", maximumFractionDigits:0 });
+
+    function stars(r){
+      const full = Math.floor(r);
+      const half = (r - full) >= 0.5 ? 1 : 0;
+      return "★".repeat(full) + (half ? "☆" : "") + "· " + r.toFixed(1);
+    }
+
+    // ====== CART (localStorage) ======
+    const CART_KEY = "yadiel_cart_v1";
+    function getCart(){
+      try { return JSON.parse(localStorage.getItem(CART_KEY) || "[]"); }
+      catch { return []; }
+    }
+    function setCart(items){
+      localStorage.setItem(CART_KEY, JSON.stringify(items));
+      $("#cartCount").textContent = items.length;
+    }
+
+    function openWhatsAppForProduct(p){
+      if(!WHATSAPP_PHONE || WHATSAPP_PHONE === "TU_NUMERO_AQUI"){
+        return toast("⚠️ Configura tu número de WhatsApp en el código (WHATSAPP_PHONE).");
+      }
+      const text =
+`Hola, Calzados Yadiel 👟
+Quiero este producto:
+
+• ${p.name}
+• Precio: ${money(p.price)}
+• Categoría: ${p.cat.join(", ")}
+
+Mi talla es: ___
+Mi ciudad es: ___
+
+¿Está disponible?`;
+      const msg = encodeURIComponent(text);
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, "_blank");
+    }
+
+    function productCard(p){
+      const discount = p.old ? Math.round((1 - p.price / p.old) * 100) : null;
+      return `
+        <article class="card" data-id="${p.id}">
+          <div class="pimg">
+  ${p.img
+    ? `<img src="${p.img}" alt="${p.name}" class="p-photo">`
+    : `<span>${p.name.toUpperCase()}</span>`
+  }
+</div>
+
+          <div class="pbody">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+              <h4 class="ptitle">${p.name}</h4>
+              <span class="badge">${p.tag}${discount ? " · -" + discount + "%" : ""}</span>
+            </div>
+            <div class="pmeta">
+              <span>${p.cat.join(", ")}</span>
+              <span class="stars">${stars(p.rating)}</span>
+            </div>
+            <div class="row">
+              <div>
+                <span class="price">${money(p.price)}</span>
+                ${p.old ? `<span class="strike">${money(p.old)}</span>` : ``}
+              </div>
+              <button class="btn small green" data-buy="${p.id}">Comprar</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // ====== CAROUSEL ======
+    function renderCarousel(){
+      const track = $("#track");
+      const featured = featuredIds.map(id => products.find(p => p.id === id)).filter(Boolean);
+      track.innerHTML = featured.map(p => `<div class="slide">${productCard(p)}</div>`).join("");
+
+      const dots = $("#dots");
+      dots.innerHTML = featured.map((_,i)=>`<span class="dot ${i===0?"on":""}"></span>`).join("");
+
+      track.addEventListener("scroll", () => {
+        const slides = $$(".slide");
+        const left = track.scrollLeft;
+        let idx = 0;
+        let best = Infinity;
+        slides.forEach((s,i)=>{
+          const d = Math.abs(s.offsetLeft - left);
+          if(d < best){ best = d; idx = i; }
+        });
+        $$(".dot").forEach((d,i)=>d.classList.toggle("on", i===idx));
+      });
+
+      $("#prevBtn").addEventListener("click", () => scrollBySlides(-1));
+      $("#nextBtn").addEventListener("click", () => scrollBySlides(1));
+
+      function scrollBySlides(dir){
+        const slide = track.querySelector(".slide");
+        if(!slide) return;
+        track.scrollBy({ left: dir * (slide.clientWidth + 14), behavior:"smooth" });
+      }
+    }
+
+    // ====== GALLERY ======
+    let activeCat = "all";
+    function renderFilterBar(){
+      const bar = $("#filterBar");
+      bar.innerHTML = categories.map(c => `
+        <button class="chip ${c.key===activeCat?"active":""}" data-filter="${c.key}">${c.label}</button>
+      `).join("");
+    }
+
+    function renderGallery(){
+      const q = ($("#searchInput")?.value || "").trim().toLowerCase();
+      const filtered = products.filter(p => {
+        const matchCat = activeCat === "all" ? true : p.cat.includes(activeCat);
+        const matchText = q ? (p.name.toLowerCase().includes(q) || p.cat.join(" ").includes(q)) : true;
+        return matchCat && matchText;
+      });
+
+      $("#galleryGrid").innerHTML = filtered.map(p => productCard(p)).join("");
+      $("#resultCount").textContent = `Mostrando ${filtered.length} producto(s)`;
+    }
+
+    // ====== EVENTS ======
+    document.addEventListener("click", (e) => {
+      const buy = e.target?.getAttribute?.("data-buy");
+      if(buy){
+        const p = products.find(x => x.id === buy);
+        if(p) openWhatsAppForProduct(p);
+      }
+
+      const f = e.target?.getAttribute?.("data-filter");
+      if(f){
+        activeCat = f;
+        renderFilterBar();
+        renderGallery();
+      }
+
+      const cat = e.target?.getAttribute?.("data-cat");
+      if(cat){
+        activeCat = cat;
+        renderFilterBar();
+        renderGallery();
+        $$(".chip[data-cat]").forEach(b=>b.classList.toggle("active", b.getAttribute("data-cat")===cat));
+      }
+    });
+
+    $("#searchInput")?.addEventListener("input", () => renderGallery());
+
+    $("#cartBtn").addEventListener("click", () => {
+      toast("💡 Tip: para comprar, usa el botón 'Comprar' (WhatsApp).");
+    });
+
+    $("#whatsBtn").addEventListener("click", () => {
+      if(!WHATSAPP_PHONE || WHATSAPP_PHONE === "TU_NUMERO_AQUI"){
+        return toast("⚠️ Configura tu número de WhatsApp en el código (WHATSAPP_PHONE).");
+      }
+      const msg = encodeURIComponent("Hola, Calzados Yadiel 👟. Quiero comprar zapatos. ¿Me ayudas con tallas y envío?");
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, "_blank");
+    });
+
+    // ====== TOAST ======
+    let toastTimer = null;
+    function toast(text){
+      let el = document.getElementById("toast");
+      if(!el){
+        el = document.createElement("div");
+        el.id = "toast";
+        el.style.position="fixed";
+        el.style.left="50%";
+        el.style.bottom="18px";
+        el.style.transform="translateX(-50%)";
+        el.style.padding="12px 14px";
+        el.style.border="1px solid rgba(255,255,255,.12)";
+        el.style.background="rgba(15,16,22,.92)";
+        el.style.backdropFilter="blur(10px)";
+        el.style.borderRadius="999px";
+        el.style.boxShadow="0 12px 30px rgba(0,0,0,.35)";
+        el.style.color="white";
+        el.style.zIndex="999";
+        document.body.appendChild(el);
+      }
+      el.textContent = text;
+      el.style.opacity="1";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ el.style.opacity="0"; }, 1600);
+    }
+
+    // ====== INIT ======
+    $("#year").textContent = new Date().getFullYear();
+    renderCarousel();
+    renderFilterBar();
+    renderGallery();
+  </script>
+</body>
+</html>
