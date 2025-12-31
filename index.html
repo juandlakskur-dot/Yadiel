@@ -366,8 +366,13 @@
 
   /* galería de productos 1 columna */
   .products-grid{
-    grid-template-columns: 1fr !important;
+  grid-template-columns: repeat(3, 1fr);
+}
+  @media (max-width: 920px){
+  .products-grid{
+    grid-template-columns: 1fr;
   }
+}
 
   /* cards más compactas */
   .card{
@@ -884,5 +889,6 @@ Mi ciudad es: ___
 
 </body>
 </html>
+
 
 
