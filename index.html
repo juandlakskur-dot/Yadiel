@@ -788,6 +788,44 @@ Mi ciudad es: ___
         if(!slide) return;
         track.scrollBy({ left: dir * (slide.clientWidth + 14), behavior:"smooth" });
       }
+      // ===== AUTOPLAY =====
+let autoTimer = null;
+let paused = false;
+
+function startAuto(){
+  stopAuto();
+  autoTimer = setInterval(() => {
+    if(paused) return;
+
+    const slide = track.querySelector(".slide");
+    if(!slide) return;
+
+    const step = slide.clientWidth + 14;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+
+    // Si llega al final, vuelve al inicio
+    if(track.scrollLeft >= maxScroll - 5){
+      track.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      track.scrollBy({ left: step, behavior: "smooth" });
+    }
+  }, 1500); // cada 1.5 segundos
+}
+
+function stopAuto(){
+  if(autoTimer) clearInterval(autoTimer);
+  autoTimer = null;
+}
+
+// Pausa cuando el usuario toca / pasa el mouse
+track.addEventListener("mouseenter", () => paused = true);
+track.addEventListener("mouseleave", () => paused = false);
+track.addEventListener("touchstart", () => paused = true, { passive:true });
+track.addEventListener("touchend", () => paused = false, { passive:true });
+
+// Inicia autoplay
+startAuto();
+
     }
 
     // ====== GALLERY ======
@@ -889,6 +927,7 @@ Mi ciudad es: ___
 
 </body>
 </html>
+
 
 
 
